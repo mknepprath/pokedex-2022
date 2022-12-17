@@ -1,6 +1,18 @@
-import { notFound } from "next/navigation";
+export async function fetchPokemonByName(
+  name?: string
+): Promise<Pokemon | null> {
+  try {
+    let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    return await res.json();
+  } catch (error: any) {
+    console.log(error);
+    return null;
+  }
+}
 
-import { Props, fetchPokemonByName } from "./page";
+export interface Props {
+  params?: { slug: string };
+}
 
 export default async function PokemonHead({ params }: Props) {
   let pokemon = await fetchPokemonByName(params?.slug);
