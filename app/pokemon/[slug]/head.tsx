@@ -1,6 +1,4 @@
-export async function fetchPokemonByName(
-  name?: string
-): Promise<Pokemon | null> {
+async function fetchPokemonByName(name?: string): Promise<Pokemon | null> {
   try {
     let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     return await res.json();
@@ -10,7 +8,7 @@ export async function fetchPokemonByName(
   }
 }
 
-export interface Props {
+interface Props {
   params?: { slug: string };
 }
 
