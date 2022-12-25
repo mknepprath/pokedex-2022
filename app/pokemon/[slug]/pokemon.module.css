@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+.headerName {
+  font-size: 2.25em;
+  text-transform:capitalize;
+}
+.headerTypeContainer {
+  align-items: center;
+  display: flex;
+  gap: .5em;
+}

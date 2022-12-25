@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import styles from "./pokemon.module.css";
+
 async function fetchPokemonByName(name?: string): Promise<Pokemon | null> {
   try {
     let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
@@ -20,10 +22,12 @@ export default async function PokemonPage({ params }: Props) {
   if (!pokemon) return notFound();
 
   return (
-    <div>
-      <h1>{pokemon.name}</h1>
-      <p>Height: {pokemon.height}&quot;</p>
-      <p>Weight: {pokemon.weight} lbs</p>
+    <div className={styles.header}>
+      <h1 className={styles.headerName}>{pokemon.name}</h1>
+      <p className={styles.headerTypeContainer}>
+        Height: {pokemon.height}&quot;
+      </p>
+      <p className={styles.headerTypeContainer}>Weight: {pokemon.weight} lbs</p>
       <Image
         alt={`#${pokemon.order}`}
         height={128}
